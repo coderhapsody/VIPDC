@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E5173D87-2A0E-4317-87E5-926240559260}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VIPDC.Web</RootNamespace>
+    <AssemblyName>VIPDC.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Infrastructure.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\temp\efprs-master\net45\Infrastructure.Data\bin\Release\Infrastructure.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Wcf">
+      <HintPath>..\packages\Ninject.Extensions.Wcf.3.0.0.5\lib\net45-full\Ninject.Extensions.Wcf.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.Web.3.0.0.5\lib\net45-full\Ninject.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="Telerik.Web.UI, Version=2013.3.1324.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCAJAX\2013.3.1324.45\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins, Version=2013.3.1324.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCAJAX\2013.3.1324.45\Telerik.Web.UI.Skins.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AjaxService.svc.cs">
+      <DependentUpon>AjaxService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\NinjectWeb.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Base\BaseForm.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditTextTemplates.aspx.cs">
+      <DependentUpon>EditTextTemplates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditTextTemplates.aspx.designer.cs">
+      <DependentUpon>EditTextTemplates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\BrowserCompatibility.cs" />
+    <Compile Include="Helpers\LabelStyleNames.cs" />
+    <Compile Include="Helpers\RadHelper.cs" />
+    <Compile Include="Helpers\WebFormHelper.cs" />
+    <Compile Include="JSReferences.aspx.cs">
+      <DependentUpon>JSReferences.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JSReferences.aspx.designer.cs">
+      <DependentUpon>JSReferences.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageAlerts.aspx.cs">
+      <DependentUpon>ManageAlerts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageAlerts.aspx.designer.cs">
+      <DependentUpon>ManageAlerts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageConfiguration.aspx.cs">
+      <DependentUpon>ManageConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageConfiguration.aspx.designer.cs">
+      <DependentUpon>ManageConfiguration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageParticipants.aspx.cs">
+      <DependentUpon>ManageParticipants.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageParticipants.aspx.designer.cs">
+      <DependentUpon>ManageParticipants.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageRolePrivilege.aspx.cs">
+      <DependentUpon>ManageRolePrivilege.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageRolePrivilege.aspx.designer.cs">
+      <DependentUpon>ManageRolePrivilege.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterBank.aspx.cs">
+      <DependentUpon>MasterBank.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterBank.aspx.designer.cs">
+      <DependentUpon>MasterBank.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterClassType.aspx.cs">
+      <DependentUpon>MasterClassType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterClassType.aspx.designer.cs">
+      <DependentUpon>MasterClassType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterCustomer.aspx.cs">
+      <DependentUpon>MasterCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterCustomer.aspx.designer.cs">
+      <DependentUpon>MasterCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterEmployee.aspx.cs">
+      <DependentUpon>MasterEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterEmployee.aspx.designer.cs">
+      <DependentUpon>MasterEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterInformationSource.aspx.cs">
+      <DependentUpon>MasterInformationSource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterInformationSource.aspx.designer.cs">
+      <DependentUpon>MasterInformationSource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterJobPosition.aspx.cs">
+      <DependentUpon>MasterJobPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterJobPosition.aspx.designer.cs">
+      <DependentUpon>MasterJobPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterModule.aspx.cs">
+      <DependentUpon>MasterModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterModule.aspx.designer.cs">
+      <DependentUpon>MasterModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\MasterPrompt.Master.cs">
+      <DependentUpon>MasterPrompt.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\MasterPrompt.Master.designer.cs">
+      <DependentUpon>MasterPrompt.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\MasterUnregisteredPage.Master.cs">
+      <DependentUpon>MasterUnregisteredPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\MasterUnregisteredPage.Master.designer.cs">
+      <DependentUpon>MasterUnregisteredPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\MasterWorkspace.Master.cs">
+      <DependentUpon>MasterWorkspace.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\MasterWorkspace.Master.designer.cs">
+      <DependentUpon>MasterWorkspace.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterRole.aspx.cs">
+      <DependentUpon>MasterRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterRole.aspx.designer.cs">
+      <DependentUpon>MasterRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterRoleMenu.aspx.cs">
+      <DependentUpon>MasterRoleMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterRoleMenu.aspx.designer.cs">
+      <DependentUpon>MasterRoleMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterTopic.aspx.cs">
+      <DependentUpon>MasterTopic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterTopic.aspx.designer.cs">
+      <DependentUpon>MasterTopic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrintInvoice.aspx.cs">
+      <DependentUpon>PrintInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrintInvoice.aspx.designer.cs">
+      <DependentUpon>PrintInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PromptAddCustomerParticipant.aspx.cs">
+      <DependentUpon>PromptAddCustomerParticipant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PromptAddCustomerParticipant.aspx.designer.cs">
+      <DependentUpon>PromptAddCustomerParticipant.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PromptConfirmationLetter.aspx.cs">
+      <DependentUpon>PromptConfirmationLetter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PromptConfirmationLetter.aspx.designer.cs">
+      <DependentUpon>PromptConfirmationLetter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PromptConfirmationLetterUnInvoice.aspx.cs">
+      <DependentUpon>PromptConfirmationLetterUnInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PromptConfirmationLetterUnInvoice.aspx.designer.cs">
+      <DependentUpon>PromptConfirmationLetterUnInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PromptCustomer.aspx.cs">
+      <DependentUpon>PromptCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PromptCustomer.aspx.designer.cs">
+      <DependentUpon>PromptCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiveConfirmationLetter.aspx.cs">
+      <DependentUpon>ReceiveConfirmationLetter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReceiveConfirmationLetter.aspx.designer.cs">
+      <DependentUpon>ReceiveConfirmationLetter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportListConfirmationLetter.aspx.cs">
+      <DependentUpon>ReportListConfirmationLetter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportListConfirmationLetter.aspx.designer.cs">
+      <DependentUpon>ReportListConfirmationLetter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportListInvoice.aspx.cs">
+      <DependentUpon>ReportListInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportListInvoice.aspx.designer.cs">
+      <DependentUpon>ReportListInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportPreview.aspx.cs">
+      <DependentUpon>ReportPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportPreview.aspx.designer.cs">
+      <DependentUpon>ReportPreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TrxConfirmationLetter.aspx.cs">
+      <DependentUpon>TrxConfirmationLetter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrxConfirmationLetter.aspx.designer.cs">
+      <DependentUpon>TrxConfirmationLetter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TrxInvoice.aspx.cs">
+      <DependentUpon>TrxInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrxInvoice.aspx.designer.cs">
+      <DependentUpon>TrxInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TrxPayment.aspx.cs">
+      <DependentUpon>TrxPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrxPayment.aspx.designer.cs">
+      <DependentUpon>TrxPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ApplicationMenu.ascx.cs">
+      <DependentUpon>ApplicationMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ApplicationMenu.ascx.designer.cs">
+      <DependentUpon>ApplicationMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ConfirmationLetterDetail.ascx.cs">
+      <DependentUpon>ConfirmationLetterDetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ConfirmationLetterDetail.ascx.designer.cs">
+      <DependentUpon>ConfirmationLetterDetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CurrentCredential.ascx.cs">
+      <DependentUpon>CurrentCredential.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\CurrentCredential.ascx.designer.cs">
+      <DependentUpon>CurrentCredential.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InvoiceDetail.ascx.cs">
+      <DependentUpon>InvoiceDetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\InvoiceDetail.ascx.designer.cs">
+      <DependentUpon>InvoiceDetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PaymentDueAlerts.ascx.cs">
+      <DependentUpon>PaymentDueAlerts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\PaymentDueAlerts.ascx.designer.cs">
+      <DependentUpon>PaymentDueAlerts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewActiveAlerts.ascx.cs">
+      <DependentUpon>ViewActiveAlerts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ViewActiveAlerts.ascx.designer.cs">
+      <DependentUpon>ViewActiveAlerts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserLogin.aspx.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserLogin.aspx.designer.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VoidConfirmationLetter.aspx.cs">
+      <DependentUpon>VoidConfirmationLetter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VoidConfirmationLetter.aspx.designer.cs">
+      <DependentUpon>VoidConfirmationLetter.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxService.svc" />
+    <Content Include="ChangePassword.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="EditTextTemplates.aspx" />
+    <Content Include="Images\chat.png" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\EditCodeHS.png" />
+    <Content Include="Images\hand.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logoheader.png" />
+    <Content Include="Images\PrintHS.png" />
+    <Content Include="Images\team_0.jpg" />
+    <Content Include="Images\user_green.png" />
+    <Content Include="Images\vip_logo.jpg" />
+    <Content Include="Images\zoom.png" />
+    <Content Include="JSReferences.aspx" />
+    <Content Include="ManageAlerts.aspx" />
+    <Content Include="ManageConfiguration.aspx" />
+    <Content Include="ManageParticipants.aspx" />
+    <Content Include="ManageRolePrivilege.aspx" />
+    <Content Include="ManageUsers.aspx" />
+    <Content Include="MasterBank.aspx" />
+    <Content Include="MasterClassType.aspx" />
+    <Content Include="MasterCustomer.aspx" />
+    <Content Include="MasterEmployee.aspx" />
+    <Content Include="MasterInformationSource.aspx" />
+    <Content Include="MasterJobPosition.aspx" />
+    <Content Include="MasterModule.aspx" />
+    <Content Include="MasterRole.aspx" />
+    <Content Include="MasterRoleMenu.aspx" />
+    <Content Include="MasterTopic.aspx" />
+    <Content Include="PrintInvoice.aspx" />
+    <Content Include="PromptAddCustomerParticipant.aspx" />
+    <Content Include="PromptConfirmationLetter.aspx" />
+    <Content Include="PromptConfirmationLetterUnInvoice.aspx" />
+    <Content Include="PromptCustomer.aspx" />
+    <Content Include="ReceiveConfirmationLetter.aspx" />
+    <Content Include="ReportListConfirmationLetter.aspx" />
+    <Content Include="ReportListInvoice.aspx" />
+    <Content Include="ReportPreview.aspx" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\NoCopy.js" />
+    <Content Include="Scripts\startup.js" />
+    <Content Include="Scripts\Utils.js" />
+    <Content Include="Styles\Default.css" />
+    <Content Include="Styles\LightStyle.css" />
+    <Content Include="Styles\Unregistered.css" />
+    <Content Include="TextTemplates\Terms.txt" />
+    <Content Include="TrxConfirmationLetter.aspx" />
+    <Content Include="TrxInvoice.aspx" />
+    <Content Include="TrxPayment.aspx" />
+    <Content Include="UserControls\ApplicationMenu.ascx" />
+    <Content Include="UserControls\ConfirmationLetterDetail.ascx" />
+    <Content Include="UserControls\CurrentCredential.ascx" />
+    <Content Include="UserControls\InvoiceDetail.ascx" />
+    <Content Include="UserControls\PaymentDueAlerts.ascx" />
+    <Content Include="UserControls\ViewActiveAlerts.ascx" />
+    <Content Include="UserLogin.aspx" />
+    <Content Include="VoidConfirmationLetter.aspx" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages.config" />
+    <Content Include="MasterPages\MasterWorkspace.Master" />
+    <Content Include="MasterPages\MasterUnregisteredPage.Master" />
+    <Content Include="MasterPages\MasterPrompt.Master" />
+    <Content Include="App_Themes\Default\Default.skin" />
+    <None Include="Properties\PublishProfiles\filesystem.pubxml" />
+    <None Include="Properties\PublishProfiles\vipdc.pubxml" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VIPDC.Data\VIPDC.Data.csproj">
+      <Project>{f9143fec-cbec-40c1-b566-169132afcf07}</Project>
+      <Name>VIPDC.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VIPDC.Providers\VIPDC.Providers.csproj">
+      <Project>{6ad56ba0-1185-4acc-99ec-60323d725b9e}</Project>
+      <Name>VIPDC.Providers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\ConfirmationLetter.rdlc" />
+    <EmbeddedResource Include="Reports\Invoice.rdlc" />
+    <EmbeddedResource Include="Reports\Kwitansi.rdlc" />
+    <EmbeddedResource Include="Reports\ListConfirmationLetter.rdlc" />
+    <EmbeddedResource Include="Reports\ListInvoice.rdlc" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49573</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59783/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

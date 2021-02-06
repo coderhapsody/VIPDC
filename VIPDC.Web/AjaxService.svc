@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="VIPDC.Web.AjaxService" CodeBehind="AjaxService.svc.cs" Factory="Ninject.Extensions.Wcf.NinjectServiceHostFactory" %>

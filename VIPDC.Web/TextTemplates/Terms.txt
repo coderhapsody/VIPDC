@@ -1,0 +1,16 @@
+<p style="text-align: left;">Dengan menandatangani surat konfirmasi ini Anda telah menyetujui bahwa :
+</p>
+<ol>
+    <li>Melunasi pembayaran sebelum tanggal &nbsp;<strong>[PaymentDueDate]</strong></li>
+    <li>
+    Mengirim pembayaran via transfer ke <strong>[BankName]</strong> dengan:</li>
+    <ul>
+        <li>
+        Nama Rekening&nbsp; &nbsp;: [AccountName]
+        </li>
+        <li>Nomor Rekening&nbsp; : [AccountNumber]</li>
+    </ul>
+    <li>Jika pembayaran sudah lunas dan terjadi pembatalan, maka akan dikenakan denda pembatalan sebesar 55% dari harga yang disetujui.
+    </li>
+</ol>
+<p>&nbsp;</p>

@@ -1,0 +1,1631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VIPDCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alert">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="varchar(max)" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="BackColor" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AccountName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tax" Type="bit" Nullable="false" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConfirmationLetter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LetterNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="AccountManagerID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="TrainingLocation" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="TransferToBankID" Type="int" />
+          <Property Name="TotalParticipants" Type="int" Nullable="false" />
+          <Property Name="ClassTypeID" Type="int" Nullable="false" />
+          <Property Name="TopicID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Tax" Type="money" Nullable="false" />
+          <Property Name="PPH" Type="money" Nullable="false" />
+          <Property Name="Discount" Type="money" Nullable="false" />
+          <Property Name="TotalPrice" Type="money" Nullable="false" />
+          <Property Name="PaymentDueDate" Type="datetime" />
+          <Property Name="LetterReceiveDate" Type="datetime" />
+          <Property Name="RefLetterID" Type="int" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VoidDate" Type="datetime" />
+          <Property Name="VoidReason" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ConfirmationLetterModule">
+          <Key>
+            <PropertyRef Name="LetterID" />
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="LetterID" Type="int" Nullable="false" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConfirmationLetterSchedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConfirmationLetterID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CustomerType" Type="varchar" MaxLength="2" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Gender" Type="varchar" MaxLength="1" />
+          <Property Name="JobPositionId" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+          <Property Name="CellPhone1" Type="varchar" MaxLength="20" />
+          <Property Name="CellPhone2" Type="varchar" MaxLength="20" />
+          <Property Name="Website" Type="varchar" MaxLength="50" />
+          <Property Name="SocialMediaNetwork1" Type="varchar" MaxLength="50" />
+          <Property Name="SocialMediaNetwork2" Type="varchar" MaxLength="50" />
+          <Property Name="ContactPersonName" Type="varchar" MaxLength="50" />
+          <Property Name="ContactPersonTitle" Type="varchar" MaxLength="50" />
+          <Property Name="InformationSource" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedWhen" Type="datetime" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" />
+          <Property Name="ChangedWhen" Type="datetime" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" />
+          <Property Name="WorkPhone1" Type="varchar" MaxLength="20" />
+          <Property Name="WorkPhone2" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Initial" Type="varchar" MaxLength="5" />
+          <Property Name="Gender" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CellPhone1" Type="varchar" MaxLength="20" />
+          <Property Name="CellPhone2" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="IsAllowLogin" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsAllowBackdate" Type="bit" Nullable="false" />
+          <Property Name="BackColor" Type="int" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InformationSource">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LetterID" Type="int" Nullable="false" />
+          <Property Name="InvoiceNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Tax" Type="money" Nullable="false" />
+          <Property Name="PPH" Type="money" Nullable="false" />
+          <Property Name="Discount" Type="money" Nullable="false" />
+          <Property Name="TotalPrice" Type="money" Nullable="false" />
+          <Property Name="TransferToBankID" Type="int" />
+          <Property Name="PaymentDueDate" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="2000" />
+          <Property Name="VoidDate" Type="datetime" />
+          <Property Name="VoidReason" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedWhen" Type="datetime" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" />
+          <Property Name="ChangedWhen" Type="datetime" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="JobPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NavigationTo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Seq" Type="int" Nullable="false" />
+          <Property Name="ParentMenuID" Type="int" />
+          <Property Name="Type" Type="tinyint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ApprovalCode" Type="varchar" MaxLength="20" />
+          <Property Name="Amount" Type="decimal" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="VoidDate" Type="datetime" />
+          <Property Name="VoidReason" Type="varchar" MaxLength="1000" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleMenu">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="AllowUpdate" Type="bit" />
+          <Property Name="AllowAddNew" Type="bit" />
+          <Property Name="AllowDelete" Type="bit" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RunningNumber">
+          <Key>
+            <PropertyRef Name="EntityCode" />
+            <PropertyRef Name="Month" />
+            <PropertyRef Name="Year" />
+          </Key>
+          <Property Name="EntityCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Month" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Prefix" Type="varchar" MaxLength="10" />
+          <Property Name="CurrentNo" Type="int" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="CreatedWho" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+          <Property Name="ChangedWho" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingParticipant">
+          <Key>
+            <PropertyRef Name="LetterID" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="LetterID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Alert_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Alert" Type="Self.Alert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Alert">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="ConfirmationLetter" Type="Self.ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter">
+              <PropertyRef Name="TransferToBankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_ClassType">
+          <End Role="ClassType" Type="Self.ClassType" Multiplicity="1" />
+          <End Role="ConfirmationLetter" Type="Self.ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter">
+              <PropertyRef Name="ClassTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="ConfirmationLetter" Type="Self.ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="ConfirmationLetter" Type="Self.ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter">
+              <PropertyRef Name="AccountManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_Self">
+          <End Role="ConfirmationLetter" Type="Self.ConfirmationLetter" Multiplicity="0..1" />
+          <End Role="ConfirmationLetter1" Type="Self.ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfirmationLetter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter1">
+              <PropertyRef Name="RefLetterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_Topic">
+          <End Role="Topic" Type="Self.Topic" Multiplicity="1" />
+          <End Role="ConfirmationLetter" Type="Self.ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter">
+              <PropertyRef Name="TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetterModule_ConfirmationLetter">
+          <End Role="ConfirmationLetter" Type="Self.ConfirmationLetter" Multiplicity="1" />
+          <End Role="ConfirmationLetterModule" Type="Self.ConfirmationLetterModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfirmationLetter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetterModule">
+              <PropertyRef Name="LetterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetterModule_Module">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="ConfirmationLetterModule" Type="Self.ConfirmationLetterModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetterModule">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetterSchedule_ConfirmationLetter">
+          <End Role="ConfirmationLetter" Type="Self.ConfirmationLetter" Multiplicity="1" />
+          <End Role="ConfirmationLetterSchedule" Type="Self.ConfirmationLetterSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfirmationLetter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetterSchedule">
+              <PropertyRef Name="ConfirmationLetterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_JobPosition">
+          <End Role="JobPosition" Type="Self.JobPosition" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobPosition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="JobPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_ConfirmationLetter">
+          <End Role="ConfirmationLetter" Type="Self.ConfirmationLetter" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfirmationLetter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="LetterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_ref_ParentMenu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="ParentMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Invoice">
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleMenu_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="RoleMenu" Type="Self.RoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleMenu">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleMenu_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="RoleMenu" Type="Self.RoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleMenu">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingParticipant_ConfirmationLetter">
+          <End Role="ConfirmationLetter" Type="Self.ConfirmationLetter" Multiplicity="1" />
+          <End Role="TrainingParticipant" Type="Self.TrainingParticipant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfirmationLetter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TrainingParticipant">
+              <PropertyRef Name="LetterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingParticipant_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="TrainingParticipant" Type="Self.TrainingParticipant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TrainingParticipant">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VIPDCModelStoreContainer">
+          <EntitySet Name="Alert" EntityType="Self.Alert" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassType" EntityType="Self.ClassType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuration" EntityType="Self.Configuration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConfirmationLetter" EntityType="Self.ConfirmationLetter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConfirmationLetterModule" EntityType="Self.ConfirmationLetterModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConfirmationLetterSchedule" EntityType="Self.ConfirmationLetterSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InformationSource" EntityType="Self.InformationSource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobPosition" EntityType="Self.JobPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuType" EntityType="Self.MenuType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleMenu" EntityType="Self.RoleMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RunningNumber" EntityType="Self.RunningNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Topic" EntityType="Self.Topic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainingParticipant" EntityType="Self.TrainingParticipant" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Alert_Employee" Association="Self.FK_Alert_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Alert" EntitySet="Alert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_Bank" Association="Self.FK_ConfirmationLetter_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_ClassType" Association="Self.FK_ConfirmationLetter_ClassType">
+            <End Role="ClassType" EntitySet="ClassType" />
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_Customer" Association="Self.FK_ConfirmationLetter_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_Employee" Association="Self.FK_ConfirmationLetter_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_Self" Association="Self.FK_ConfirmationLetter_Self">
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetter" />
+            <End Role="ConfirmationLetter1" EntitySet="ConfirmationLetter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_Topic" Association="Self.FK_ConfirmationLetter_Topic">
+            <End Role="Topic" EntitySet="Topic" />
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetterModule_ConfirmationLetter" Association="Self.FK_ConfirmationLetterModule_ConfirmationLetter">
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetter" />
+            <End Role="ConfirmationLetterModule" EntitySet="ConfirmationLetterModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetterModule_Module" Association="Self.FK_ConfirmationLetterModule_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="ConfirmationLetterModule" EntitySet="ConfirmationLetterModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetterSchedule_ConfirmationLetter" Association="Self.FK_ConfirmationLetterSchedule_ConfirmationLetter">
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetter" />
+            <End Role="ConfirmationLetterSchedule" EntitySet="ConfirmationLetterSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_JobPosition" Association="Self.FK_Customer_JobPosition">
+            <End Role="JobPosition" EntitySet="JobPosition" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_ConfirmationLetter" Association="Self.FK_Invoice_ConfirmationLetter">
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetter" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Employee" Association="Self.FK_Invoice_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_ref_ParentMenu" Association="Self.FK_Menu_ref_ParentMenu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Menu1" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Invoice" Association="Self.FK_Payment_Invoice">
+            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleMenu_Menu" Association="Self.FK_RoleMenu_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="RoleMenu" EntitySet="RoleMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleMenu_Role" Association="Self.FK_RoleMenu_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="RoleMenu" EntitySet="RoleMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingParticipant_ConfirmationLetter" Association="Self.FK_TrainingParticipant_ConfirmationLetter">
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetter" />
+            <End Role="TrainingParticipant" EntitySet="TrainingParticipant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingParticipant_Customer" Association="Self.FK_TrainingParticipant_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="TrainingParticipant" EntitySet="TrainingParticipant" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VIPDCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VIPDCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClassTypes" EntityType="VIPDCModel.ClassType" />
+          <EntitySet Name="Employees" EntityType="VIPDCModel.Employee" />
+          <EntitySet Name="JobPositions" EntityType="VIPDCModel.JobPosition" />
+          <EntitySet Name="Menus" EntityType="VIPDCModel.Menu" />
+          <EntitySet Name="Roles" EntityType="VIPDCModel.Role" />
+          <EntitySet Name="RoleMenus" EntityType="VIPDCModel.RoleMenu" />
+          <EntitySet Name="RunningNumbers" EntityType="VIPDCModel.RunningNumber" />
+          <EntitySet Name="Topics" EntityType="VIPDCModel.Topic" />
+          <AssociationSet Name="FK_Employee_Role" Association="VIPDCModel.FK_Employee_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_ref_ParentMenu" Association="VIPDCModel.FK_Menu_ref_ParentMenu">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Menu1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleMenu_Menu" Association="VIPDCModel.FK_RoleMenu_Menu">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="RoleMenu" EntitySet="RoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleMenu_Role" Association="VIPDCModel.FK_RoleMenu_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="RoleMenu" EntitySet="RoleMenus" />
+          </AssociationSet>
+          <EntitySet Name="MenuTypes" EntityType="VIPDCModel.MenuType" />
+          <EntitySet Name="Modules" EntityType="VIPDCModel.Module" />
+          <EntitySet Name="Payments" EntityType="VIPDCModel.Payment" />
+          <EntitySet Name="Configurations" EntityType="VIPDCModel.Configuration" />
+          <EntitySet Name="Alerts" EntityType="VIPDCModel.Alert" />
+          <EntitySet Name="Banks" EntityType="VIPDCModel.Bank" />
+          <EntitySet Name="Customers" EntityType="VIPDCModel.Customer" />
+          <AssociationSet Name="FK_Customer_JobPosition" Association="VIPDCModel.FK_Customer_JobPosition">
+            <End Role="JobPosition" EntitySet="JobPositions" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <EntitySet Name="InformationSources" EntityType="VIPDCModel.InformationSource" />
+          <AssociationSet Name="FK_Alert_Employee" Association="VIPDCModel.FK_Alert_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Alert" EntitySet="Alerts" />
+          </AssociationSet>
+          <EntitySet Name="ConfirmationLetters" EntityType="VIPDCModel.ConfirmationLetter" />
+          <EntitySet Name="ConfirmationLetterSchedules" EntityType="VIPDCModel.ConfirmationLetterSchedule" />
+          <AssociationSet Name="FK_ConfirmationLetter_Bank" Association="VIPDCModel.FK_ConfirmationLetter_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_ClassType" Association="VIPDCModel.FK_ConfirmationLetter_ClassType">
+            <End Role="ClassType" EntitySet="ClassTypes" />
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_Customer" Association="VIPDCModel.FK_ConfirmationLetter_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_Employee" Association="VIPDCModel.FK_ConfirmationLetter_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_Self" Association="VIPDCModel.FK_ConfirmationLetter_Self">
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetters" />
+            <End Role="ConfirmationLetter1" EntitySet="ConfirmationLetters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetter_Topic" Association="VIPDCModel.FK_ConfirmationLetter_Topic">
+            <End Role="Topic" EntitySet="Topics" />
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConfirmationLetterSchedule_ConfirmationLetter" Association="VIPDCModel.FK_ConfirmationLetterSchedule_ConfirmationLetter">
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetters" />
+            <End Role="ConfirmationLetterSchedule" EntitySet="ConfirmationLetterSchedules" />
+          </AssociationSet>
+          <AssociationSet Name="ConfirmationLetterModule" Association="VIPDCModel.ConfirmationLetterModule">
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetters" />
+            <End Role="Module" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="TrainingParticipant" Association="VIPDCModel.TrainingParticipant">
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetters" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <EntitySet Name="Invoices" EntityType="VIPDCModel.Invoice" />
+          <AssociationSet Name="FK_Invoice_ConfirmationLetter" Association="VIPDCModel.FK_Invoice_ConfirmationLetter">
+            <End Role="ConfirmationLetter" EntitySet="ConfirmationLetters" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Employee" Association="VIPDCModel.FK_Invoice_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Invoice" Association="VIPDCModel.FK_Payment_Invoice">
+            <End Role="Invoice" EntitySet="Invoices" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ClassType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tax" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ConfirmationLetters" Relationship="VIPDCModel.FK_ConfirmationLetter_ClassType" FromRole="ClassType" ToRole="ConfirmationLetter" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CellPhone1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CellPhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="IsAllowLogin" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Role" Relationship="VIPDCModel.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <Property Name="Initial" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IsAllowBackdate" Type="Boolean" Nullable="false" />
+          <Property Name="BackColor" Type="Int32" />
+          <NavigationProperty Name="Alerts" Relationship="VIPDCModel.FK_Alert_Employee" FromRole="Employee" ToRole="Alert" />
+          <NavigationProperty Name="ConfirmationLetters" Relationship="VIPDCModel.FK_ConfirmationLetter_Employee" FromRole="Employee" ToRole="ConfirmationLetter" />
+          <NavigationProperty Name="Invoices" Relationship="VIPDCModel.FK_Invoice_Employee" FromRole="Employee" ToRole="Invoice" />
+        </EntityType>
+        <EntityType Name="JobPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customers" Relationship="VIPDCModel.FK_Customer_JobPosition" FromRole="JobPosition" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NavigationTo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Seq" Type="Int32" Nullable="false" />
+          <Property Name="ParentMenuID" Type="Int32" />
+          <Property Name="Type" Type="Byte" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Menu1" Relationship="VIPDCModel.FK_Menu_ref_ParentMenu" FromRole="Menu" ToRole="Menu1" />
+          <NavigationProperty Name="Menu2" Relationship="VIPDCModel.FK_Menu_ref_ParentMenu" FromRole="Menu1" ToRole="Menu" />
+          <NavigationProperty Name="RoleMenus" Relationship="VIPDCModel.FK_RoleMenu_Menu" FromRole="Menu" ToRole="RoleMenu" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="VIPDCModel.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+          <NavigationProperty Name="RoleMenus" Relationship="VIPDCModel.FK_RoleMenu_Role" FromRole="Role" ToRole="RoleMenu" />
+        </EntityType>
+        <EntityType Name="RoleMenu">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="AllowUpdate" Type="Boolean" />
+          <Property Name="AllowAddNew" Type="Boolean" />
+          <Property Name="AllowDelete" Type="Boolean" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Menu" Relationship="VIPDCModel.FK_RoleMenu_Menu" FromRole="RoleMenu" ToRole="Menu" />
+          <NavigationProperty Name="Role" Relationship="VIPDCModel.FK_RoleMenu_Role" FromRole="RoleMenu" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="RunningNumber">
+          <Key>
+            <PropertyRef Name="EntityCode" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Month" />
+          </Key>
+          <Property Name="EntityCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="CurrentNo" Type="Int32" Nullable="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="Int32" Nullable="false" />
+          <Property Name="Prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ConfirmationLetters" Relationship="VIPDCModel.FK_ConfirmationLetter_Topic" FromRole="Topic" ToRole="ConfirmationLetter" />
+        </EntityType>
+        <Association Name="FK_Employee_Role">
+          <End Type="VIPDCModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="VIPDCModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_ref_ParentMenu">
+          <End Type="VIPDCModel.Menu" Role="Menu" Multiplicity="0..1" />
+          <End Type="VIPDCModel.Menu" Role="Menu1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="ParentMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleMenu_Menu">
+          <End Type="VIPDCModel.Menu" Role="Menu" Multiplicity="1" />
+          <End Type="VIPDCModel.RoleMenu" Role="RoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleMenu">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleMenu_Role">
+          <End Type="VIPDCModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="VIPDCModel.RoleMenu" Role="RoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleMenu">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MenuType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ConfirmationLetters" Relationship="VIPDCModel.ConfirmationLetterModule" FromRole="Module" ToRole="ConfirmationLetter" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="PaymentType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApprovalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
+          <Property Name="Notes" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="VoidDate" Type="DateTime" Precision="3" />
+          <Property Name="VoidReason" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Invoice" Relationship="VIPDCModel.FK_Payment_Invoice" FromRole="Payment" ToRole="Invoice" />
+        </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Alert">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="BackColor" Type="Int32" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="VIPDCModel.FK_Alert_Employee" FromRole="Alert" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AccountName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ConfirmationLetters" Relationship="VIPDCModel.FK_ConfirmationLetter_Bank" FromRole="Bank" ToRole="ConfirmationLetter" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerType" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="JobPositionId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CellPhone1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CellPhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SocialMediaNetwork1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SocialMediaNetwork2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPersonTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InformationSource" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Precision="3" />
+          <Property Name="CreatedWho" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Precision="3" />
+          <Property Name="ChangedWho" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPhone1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JobPosition" Relationship="VIPDCModel.FK_Customer_JobPosition" FromRole="Customer" ToRole="JobPosition" />
+          <NavigationProperty Name="ConfirmationLetters" Relationship="VIPDCModel.FK_ConfirmationLetter_Customer" FromRole="Customer" ToRole="ConfirmationLetter" />
+          <NavigationProperty Name="ConfirmationLetters1" Relationship="VIPDCModel.TrainingParticipant" FromRole="Customer" ToRole="ConfirmationLetter" />
+        </EntityType>
+        <Association Name="FK_Customer_JobPosition">
+          <End Type="VIPDCModel.JobPosition" Role="JobPosition" Multiplicity="0..1" />
+          <End Type="VIPDCModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobPosition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="JobPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="InformationSource">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Alert_Employee">
+          <End Type="VIPDCModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="VIPDCModel.Alert" Role="Alert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Alert">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ConfirmationLetter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LetterNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AccountManagerID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="TrainingLocation" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TransferToBankID" Type="Int32" />
+          <Property Name="TotalParticipants" Type="Int32" Nullable="false" />
+          <Property Name="ClassTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TopicID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Tax" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PPH" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PaymentDueDate" Type="DateTime" Precision="3" />
+          <Property Name="LetterReceiveDate" Type="DateTime" Precision="3" />
+          <Property Name="RefLetterID" Type="Int32" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedWho" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VoidDate" Type="DateTime" Precision="3" />
+          <Property Name="VoidReason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Bank" Relationship="VIPDCModel.FK_ConfirmationLetter_Bank" FromRole="ConfirmationLetter" ToRole="Bank" />
+          <NavigationProperty Name="ClassType" Relationship="VIPDCModel.FK_ConfirmationLetter_ClassType" FromRole="ConfirmationLetter" ToRole="ClassType" />
+          <NavigationProperty Name="Customer" Relationship="VIPDCModel.FK_ConfirmationLetter_Customer" FromRole="ConfirmationLetter" ToRole="Customer" />
+          <NavigationProperty Name="Employee" Relationship="VIPDCModel.FK_ConfirmationLetter_Employee" FromRole="ConfirmationLetter" ToRole="Employee" />
+          <NavigationProperty Name="ConfirmationLetter1" Relationship="VIPDCModel.FK_ConfirmationLetter_Self" FromRole="ConfirmationLetter" ToRole="ConfirmationLetter1" />
+          <NavigationProperty Name="ConfirmationLetter2" Relationship="VIPDCModel.FK_ConfirmationLetter_Self" FromRole="ConfirmationLetter1" ToRole="ConfirmationLetter" />
+          <NavigationProperty Name="Topic" Relationship="VIPDCModel.FK_ConfirmationLetter_Topic" FromRole="ConfirmationLetter" ToRole="Topic" />
+          <NavigationProperty Name="ConfirmationLetterSchedules" Relationship="VIPDCModel.FK_ConfirmationLetterSchedule_ConfirmationLetter" FromRole="ConfirmationLetter" ToRole="ConfirmationLetterSchedule" />
+          <NavigationProperty Name="Modules" Relationship="VIPDCModel.ConfirmationLetterModule" FromRole="ConfirmationLetter" ToRole="Module" />
+          <NavigationProperty Name="Customers" Relationship="VIPDCModel.TrainingParticipant" FromRole="ConfirmationLetter" ToRole="Customer" />
+          <NavigationProperty Name="Invoices" Relationship="VIPDCModel.FK_Invoice_ConfirmationLetter" FromRole="ConfirmationLetter" ToRole="Invoice" />
+        </EntityType>
+        <EntityType Name="ConfirmationLetterSchedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfirmationLetterID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ConfirmationLetter" Relationship="VIPDCModel.FK_ConfirmationLetterSchedule_ConfirmationLetter" FromRole="ConfirmationLetterSchedule" ToRole="ConfirmationLetter" />
+        </EntityType>
+        <Association Name="FK_ConfirmationLetter_Bank">
+          <End Type="VIPDCModel.Bank" Role="Bank" Multiplicity="0..1" />
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter">
+              <PropertyRef Name="TransferToBankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_ClassType">
+          <End Type="VIPDCModel.ClassType" Role="ClassType" Multiplicity="1" />
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter">
+              <PropertyRef Name="ClassTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_Customer">
+          <End Type="VIPDCModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_Employee">
+          <End Type="VIPDCModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter">
+              <PropertyRef Name="AccountManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_Self">
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter" Multiplicity="0..1" />
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfirmationLetter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter1">
+              <PropertyRef Name="RefLetterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetter_Topic">
+          <End Type="VIPDCModel.Topic" Role="Topic" Multiplicity="1" />
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetter">
+              <PropertyRef Name="TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConfirmationLetterSchedule_ConfirmationLetter">
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter" Multiplicity="1" />
+          <End Type="VIPDCModel.ConfirmationLetterSchedule" Role="ConfirmationLetterSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfirmationLetter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConfirmationLetterSchedule">
+              <PropertyRef Name="ConfirmationLetterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ConfirmationLetterModule">
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter" Multiplicity="*" />
+          <End Type="VIPDCModel.Module" Role="Module" Multiplicity="*" />
+        </Association>
+        <Association Name="TrainingParticipant">
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter" Multiplicity="*" />
+          <End Type="VIPDCModel.Customer" Role="Customer" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LetterID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Tax" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PPH" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="TransferToBankID" Type="Int32" />
+          <Property Name="PaymentDueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="VoidDate" Type="DateTime" Precision="3" />
+          <Property Name="VoidReason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedWhen" Type="DateTime" Precision="3" />
+          <Property Name="CreatedWho" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedWhen" Type="DateTime" Precision="3" />
+          <Property Name="ChangedWho" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ConfirmationLetter" Relationship="VIPDCModel.FK_Invoice_ConfirmationLetter" FromRole="Invoice" ToRole="ConfirmationLetter" />
+          <NavigationProperty Name="Employee" Relationship="VIPDCModel.FK_Invoice_Employee" FromRole="Invoice" ToRole="Employee" />
+          <NavigationProperty Name="Payments" Relationship="VIPDCModel.FK_Payment_Invoice" FromRole="Invoice" ToRole="Payment" />
+        </EntityType>
+        <Association Name="FK_Invoice_ConfirmationLetter">
+          <End Type="VIPDCModel.ConfirmationLetter" Role="ConfirmationLetter" Multiplicity="1" />
+          <End Type="VIPDCModel.Invoice" Role="Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfirmationLetter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="LetterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Employee">
+          <End Type="VIPDCModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="VIPDCModel.Invoice" Role="Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Invoice">
+          <End Type="VIPDCModel.Invoice" Role="Invoice" Multiplicity="1" />
+          <End Type="VIPDCModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VIPDCModelStoreContainer" CdmEntityContainer="VIPDCEntities">
+          <EntitySetMapping Name="ClassTypes">
+            <EntityTypeMapping TypeName="VIPDCModel.ClassType">
+              <MappingFragment StoreEntitySet="ClassType">
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="VIPDCModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="BackColor" ColumnName="BackColor" />
+                <ScalarProperty Name="IsAllowBackdate" ColumnName="IsAllowBackdate" />
+                <ScalarProperty Name="Initial" ColumnName="Initial" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsAllowLogin" ColumnName="IsAllowLogin" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CellPhone2" ColumnName="CellPhone2" />
+                <ScalarProperty Name="CellPhone1" ColumnName="CellPhone1" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobPositions">
+            <EntityTypeMapping TypeName="VIPDCModel.JobPosition">
+              <MappingFragment StoreEntitySet="JobPosition">
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="VIPDCModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ParentMenuID" ColumnName="ParentMenuID" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
+                <ScalarProperty Name="NavigationTo" ColumnName="NavigationTo" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="VIPDCModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleMenus">
+            <EntityTypeMapping TypeName="VIPDCModel.RoleMenu">
+              <MappingFragment StoreEntitySet="RoleMenu">
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+                <ScalarProperty Name="AllowAddNew" ColumnName="AllowAddNew" />
+                <ScalarProperty Name="AllowUpdate" ColumnName="AllowUpdate" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RunningNumbers">
+            <EntityTypeMapping TypeName="VIPDCModel.RunningNumber">
+              <MappingFragment StoreEntitySet="RunningNumber">
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CurrentNo" ColumnName="CurrentNo" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="EntityCode" ColumnName="EntityCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Topics">
+            <EntityTypeMapping TypeName="VIPDCModel.Topic">
+              <MappingFragment StoreEntitySet="Topic">
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuTypes">
+            <EntityTypeMapping TypeName="VIPDCModel.MenuType">
+              <MappingFragment StoreEntitySet="MenuType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="VIPDCModel.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="VIPDCModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="VoidReason" ColumnName="VoidReason" />
+                <ScalarProperty Name="VoidDate" ColumnName="VoidDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ApprovalCode" ColumnName="ApprovalCode" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configurations">
+            <EntityTypeMapping TypeName="VIPDCModel.Configuration">
+              <MappingFragment StoreEntitySet="Configuration">
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alerts">
+            <EntityTypeMapping TypeName="VIPDCModel.Alert">
+              <MappingFragment StoreEntitySet="Alert">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="BackColor" ColumnName="BackColor" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="VIPDCModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="VIPDCModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="WorkPhone2" ColumnName="WorkPhone2" />
+                <ScalarProperty Name="WorkPhone1" ColumnName="WorkPhone1" />
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="InformationSource" ColumnName="InformationSource" />
+                <ScalarProperty Name="ContactPersonTitle" ColumnName="ContactPersonTitle" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="SocialMediaNetwork2" ColumnName="SocialMediaNetwork2" />
+                <ScalarProperty Name="SocialMediaNetwork1" ColumnName="SocialMediaNetwork1" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="CellPhone2" ColumnName="CellPhone2" />
+                <ScalarProperty Name="CellPhone1" ColumnName="CellPhone1" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="JobPositionId" ColumnName="JobPositionId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InformationSources">
+            <EntityTypeMapping TypeName="VIPDCModel.InformationSource">
+              <MappingFragment StoreEntitySet="InformationSource">
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfirmationLetters">
+            <EntityTypeMapping TypeName="VIPDCModel.ConfirmationLetter">
+              <MappingFragment StoreEntitySet="ConfirmationLetter">
+                <ScalarProperty Name="VoidReason" ColumnName="VoidReason" />
+                <ScalarProperty Name="VoidDate" ColumnName="VoidDate" />
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="RefLetterID" ColumnName="RefLetterID" />
+                <ScalarProperty Name="LetterReceiveDate" ColumnName="LetterReceiveDate" />
+                <ScalarProperty Name="PaymentDueDate" ColumnName="PaymentDueDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PPH" ColumnName="PPH" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+                <ScalarProperty Name="ClassTypeID" ColumnName="ClassTypeID" />
+                <ScalarProperty Name="TotalParticipants" ColumnName="TotalParticipants" />
+                <ScalarProperty Name="TransferToBankID" ColumnName="TransferToBankID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TrainingLocation" ColumnName="TrainingLocation" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="AccountManagerID" ColumnName="AccountManagerID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="LetterNo" ColumnName="LetterNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfirmationLetterSchedules">
+            <EntityTypeMapping TypeName="VIPDCModel.ConfirmationLetterSchedule">
+              <MappingFragment StoreEntitySet="ConfirmationLetterSchedule">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ConfirmationLetterID" ColumnName="ConfirmationLetterID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ConfirmationLetterModule" TypeName="VIPDCModel.ConfirmationLetterModule" StoreEntitySet="ConfirmationLetterModule">
+            <EndProperty Name="Module">
+              <ScalarProperty Name="ID" ColumnName="ModuleID" />
+            </EndProperty>
+            <EndProperty Name="ConfirmationLetter">
+              <ScalarProperty Name="ID" ColumnName="LetterID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TrainingParticipant" TypeName="VIPDCModel.TrainingParticipant" StoreEntitySet="TrainingParticipant">
+            <EndProperty Name="Customer">
+              <ScalarProperty Name="ID" ColumnName="CustomerID" />
+            </EndProperty>
+            <EndProperty Name="ConfirmationLetter">
+              <ScalarProperty Name="ID" ColumnName="LetterID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="VIPDCModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="ChangedWho" ColumnName="ChangedWho" />
+                <ScalarProperty Name="ChangedWhen" ColumnName="ChangedWhen" />
+                <ScalarProperty Name="CreatedWho" ColumnName="CreatedWho" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="VoidReason" ColumnName="VoidReason" />
+                <ScalarProperty Name="VoidDate" ColumnName="VoidDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PaymentDueDate" ColumnName="PaymentDueDate" />
+                <ScalarProperty Name="TransferToBankID" ColumnName="TransferToBankID" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PPH" ColumnName="PPH" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="LetterID" ColumnName="LetterID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

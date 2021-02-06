@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b4bc801f8867441fb7d2133fc541ef07" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="VIPDCModel.ClassType" Width="1.5" PointX="3" PointY="26.25" />
+        <EntityTypeShape EntityType="VIPDCModel.Employee" Width="1.5" PointX="3" PointY="15.875" />
+        <EntityTypeShape EntityType="VIPDCModel.JobPosition" Width="1.5" PointX="8.25" PointY="12.375" />
+        <EntityTypeShape EntityType="VIPDCModel.Menu" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="VIPDCModel.Role" Width="1.5" PointX="0.75" PointY="13.625" />
+        <EntityTypeShape EntityType="VIPDCModel.RoleMenu" Width="1.5" PointX="3" PointY="11.625" />
+        <EntityTypeShape EntityType="VIPDCModel.RunningNumber" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VIPDCModel.Topic" Width="1.5" PointX="3" PointY="7.25" />
+        <AssociationConnector Association="VIPDCModel.FK_Employee_Role" />
+        <AssociationConnector Association="VIPDCModel.FK_Menu_ref_ParentMenu" />
+        <AssociationConnector Association="VIPDCModel.FK_RoleMenu_Menu" />
+        <AssociationConnector Association="VIPDCModel.FK_RoleMenu_Role" />
+        <EntityTypeShape EntityType="VIPDCModel.MenuType" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VIPDCModel.Module" Width="1.5" PointX="7.5" PointY="16" />
+        <EntityTypeShape EntityType="VIPDCModel.Payment" Width="1.5" PointX="9.75" PointY="22.875" />
+        <EntityTypeShape EntityType="VIPDCModel.Configuration" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VIPDCModel.Alert" Width="1.5" PointX="5.25" PointY="25.5" />
+        <EntityTypeShape EntityType="VIPDCModel.Bank" Width="1.5" PointX="3" PointY="22.75" />
+        <EntityTypeShape EntityType="VIPDCModel.Customer" Width="1.5" PointX="10.5" PointY="15.375" />
+        <AssociationConnector Association="VIPDCModel.FK_Customer_JobPosition" />
+        <EntityTypeShape EntityType="VIPDCModel.InformationSource" Width="1.5" PointX="4.75" PointY="0.75" />
+        <AssociationConnector Association="VIPDCModel.FK_Alert_Employee" />
+        <EntityTypeShape EntityType="VIPDCModel.ConfirmationLetter" Width="1.5" PointX="5.25" PointY="14.5" />
+        <EntityTypeShape EntityType="VIPDCModel.ConfirmationLetterSchedule" Width="1.5" PointX="7.5" PointY="32.25" />
+        <AssociationConnector Association="VIPDCModel.FK_ConfirmationLetter_Bank" />
+        <AssociationConnector Association="VIPDCModel.FK_ConfirmationLetter_ClassType" />
+        <AssociationConnector Association="VIPDCModel.FK_ConfirmationLetter_Customer" />
+        <AssociationConnector Association="VIPDCModel.FK_ConfirmationLetter_Employee" />
+        <AssociationConnector Association="VIPDCModel.FK_ConfirmationLetter_Self" />
+        <AssociationConnector Association="VIPDCModel.FK_ConfirmationLetter_Topic" />
+        <AssociationConnector Association="VIPDCModel.FK_ConfirmationLetterSchedule_ConfirmationLetter" />
+        <AssociationConnector Association="VIPDCModel.ConfirmationLetterModule" />
+        <AssociationConnector Association="VIPDCModel.TrainingParticipant" />
+        <EntityTypeShape EntityType="VIPDCModel.Invoice" Width="1.5" PointX="7.5" PointY="19.875" />
+        <AssociationConnector Association="VIPDCModel.FK_Invoice_ConfirmationLetter" />
+        <AssociationConnector Association="VIPDCModel.FK_Invoice_Employee" />
+        <AssociationConnector Association="VIPDCModel.FK_Payment_Invoice" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
